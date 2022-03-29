@@ -1,26 +1,63 @@
-name_of_the_student_array = []
 
-function submi() {
-    var display_student_array = [];
-    for (var j = 1; j <= 4; j++) {
-        var name_of_the_student = document.getElementById("name_of_the_student" +j).value
-        console.log(name_of_the_student);
-        name_of_the_student_array.push(name_of_the_student);
+var canvas = new fabric.Canvas('myCanvas')
+ block_y=1;
+ block_x=1;
 
-    }
-    console.log(name_of_the_student_array)
-    var length_name_of_the_student = name_of_the_student_array.length;
-    console.log(length_name_of_the_student)
+block_image_width = 350;
+block_image_height = 430;
 
-    for (var k = 0; k < length_name_of_the_student; k++) {
-        display_student_array.push("<h4> name-"+name_of_the_student_array[k]+"</h4>")
+var block_image_object= "";
 
-    }
-    document.getElementById("display_name_with_commas").innerhtml = display_student_array;
-    
-    var remove_commas = display_student_array.join(" "); 
-    document.getElementById("display_name_without_commas").innerhtml = remove_commas;
-    document.getElementById("submit_button").style.display = "none";
-    document.getElementById("sort_button").style.display = "inline-block";
-    
+function new_image(get_image)
+{
+	fabric.image.fromURL(get_image, function(Image) {
+		block_image_object = Img;
+		block_image_object.scaleToWidth(block_image_width);
+		block_image_object.scaleToHeight(block_image_height);
+		block_image_object.set({
+			top:block_y,
+			left:block_x });
+			canvas.add(block_image_object);
+		});
 }
+
+window.addEventListener("keydown", my_keydown);
+
+function my_keydown(e)
+{
+keyPressed = e.keyCode;
+console.log(keyPressed);
+
+	if(keyPressed == '82') 
+	{
+		new_image('rr1.png');
+		console.log("r");
+	}
+	if(keyPressed == '71')
+	{
+		block_x = 200;
+		new_image('gr.png');
+		console.log("g");
+	}
+	
+	if(keyPressed == '89')
+	{
+		block_x =350;
+		new_image('yr.png');
+		console.log("y");
+	}
+	if(keyPressed == '80')
+	{
+		block_x = 600;
+		new_image('pr.png');
+		console.log("p");
+	}
+	if(keyPressed == '66')
+	{
+		block_x = 700;
+		new_image('br.png');
+		console.log("b");
+	}
+	
+}
+
